@@ -48,7 +48,7 @@ def drawText(window, coordinates):
 
     textSurface = FONT.render(coordinates, True, BLACK)
     h = int(HEIGHT/6) - textSurface.get_height()
-    w = int(WIDTH/2) - textSurface.get_width()
+    w = int(WIDTH/2) - textSurface.get_width()/2
     window.blit(textSurface,(w,h))
 
 
