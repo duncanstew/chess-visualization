@@ -22,6 +22,8 @@ COORDINATES = {}
 FONT = pygame.font.SysFont('Comic Sans MS', 50)
 
 COUNT = 0
+color = None
+coordinate = None
 
 def makeCoordinates():
     temp = [ltr + str(num) for ltr in LETTERS for num in NUMBERS]
@@ -59,7 +61,8 @@ def drawText(window, coordinates):
 
 
 def main():
-    global COUNT
+    global COUNT, coordinate, color
+
     window = pygame.display.set_mode((WIDTH, HEIGHT))
     window.fill(GREY)
     makeCoordinates()
@@ -76,13 +79,11 @@ def main():
             if events.type == pygame.KEYDOWN:
                 pressed = pygame.key.get_pressed()
                 if pressed[pygame.K_SPACE]:
-                    coordinates = None
-                    color = None
                     COUNT += 1
                     if COUNT % 2 == 1:
                         window.fill(GREY)
-                        coordinates, color = random.choice(list(COORDINATES.items()))
-                        drawText(window, coordinates)
+                        coordinate, color = random.choice(list(COORDINATES.items()))
+                        drawText(window, coordinate)
                     else:
                         drawRect(window, color)
 
